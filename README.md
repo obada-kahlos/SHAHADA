@@ -30,4 +30,4 @@ To run the application, execute the following command:
 - CTRL + left click on the mouse to open the project on the browser 
 
 ## Live demo
-- https://shahada-test.vercel.app/ 
+- https://shahada-puce.vercel.app/
