@@ -3,6 +3,9 @@
 ## Description
 This project utilizes a custom React hook, `useAudioHandler`, to facilitate audio playback and real-time speech recognition. The hook is designed to assist users in learning specific phrases, with immediate feedback based on speech recognition results.
 
+## Note
+- I have conducted tests on the application using the Google Chrome browser on a laptop. However, the application has not yet been tested on a mobile device or any other browser.
+
 ## Features
 - Audio playback of predefined phrases.
 - Real-time speech recognition to validate user speech against expected phrases.
