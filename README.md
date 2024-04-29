@@ -19,7 +19,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 To install the dependencies, follow these steps:
-- git clone https://github.com/obada-kahlos/Shahada-test
+- git clone https://github.com/obada-kahlos/SHAHADA
 - cd your-project-directory
 - npm install
 
