@@ -133,16 +133,14 @@ const useAudioHandler = () => {
   const mapArabicToTransliteration = (arabicText) => {
     const mapping = {
       اشهد: "ašhadu",
-      انلااله: "ʾan lā ʾilāha", // Ensure this key has no spaces
+      انلااله: "ʾan lā ʾilāha",
       الاالله: "ʾilla -llāhu,",
       واشهد: "wa-ʾašhadu ʾ",
       انمحمدا: "ʾanna muḥammadan",
       رسولالله: "rasūlu -llāh",
     };
 
-    // Normalize by removing all spaces from the Arabic text before trying to map
-    const normalizedArabic = arabicText.replace(/\s+/g, ""); // Remove all spaces
-
+    const normalizedArabic = arabicText.replace(/\s+/g, "");
     return mapping[normalizedArabic] || arabicText;
   };
 
@@ -172,20 +170,20 @@ const useAudioHandler = () => {
       transcriptMapped,
       shahadaPhrases[getLanguage][currentAudioIndex]
     );
-    const requiredMatchPercentage = getLanguage === "ar" ? 55 : 85; // Different thresholds for languages
+    const requiredMatchPercentage = getLanguage === "ar" ? 55 : 85;
 
     if (matchPercentage >= requiredMatchPercentage) {
       setTranscriptColor("green");
       if (currentAudioIndex + 1 < audioUrls.length) {
         setCurrentAudioIndex(currentAudioIndex + 1);
-        setTimeout(startAudioAndListening, 1000); // Wait before starting next audio
+        setTimeout(startAudioAndListening, 1000);
       } else {
-        setDoneOrWrong("done"); // Indicate completion if it was the last phrase
+        setDoneOrWrong("done");
       }
     } else {
       setTranscriptColor("red");
       setDoneOrWrong("wrong");
-      setTimeout(startAudioAndListening, 1000); // Retry the same audio after a pause
+      setTimeout(startAudioAndListening, 1000);
     }
   };
 
@@ -200,14 +198,14 @@ const useAudioHandler = () => {
   };
 
   const updateStyledTranscript = () => {
-    let inputWords = transcript.split(" "); // Changed `const` to `let` here
+    let inputWords = transcript.split(" ");
     let targetWords = shahadaPhrases[getLanguage][currentAudioIndex]
       .toLowerCase()
       .split(" ");
 
     if (getLanguage === "ar") {
-      inputWords = inputWords.map(mapArabicToTransliteration); // Convert Arabic to transliteration before styling
-      targetWords = targetWords.map(mapArabicToTransliteration); // Ensure target words are also transliterated
+      inputWords = inputWords.map(mapArabicToTransliteration);
+      targetWords = targetWords.map(mapArabicToTransliteration);
     }
 
     const styledWords = inputWords.map((word) => ({
@@ -219,7 +217,7 @@ const useAudioHandler = () => {
 
   useEffect(() => {
     updateStyledTranscript();
-  }, [transcript, currentAudioIndex, getLanguage]); // Include getLanguage to react to language changes
+  }, [transcript, currentAudioIndex, getLanguage]);
 
   return {
     doneOrWrong,
